@@ -243,6 +243,19 @@
     )
   }
 
+  // ---------- Editors ----------
+
+  /** The preview in the HTML is the light one; the dark one is its copy. Each gets its own scheme's tokens. */
+  function buildEditors() {
+    const lightEditor = $('.editor[data-scheme="light"]')
+    const darkEditor = lightEditor.cloneNode(true)
+    darkEditor.dataset.scheme = 'dark'
+    darkEditor.querySelector('figcaption').lastChild.textContent = 'Estuary Dark'
+    lightEditor.after(darkEditor)
+    for (const editor of [lightEditor, darkEditor])
+      for (const c of colours) editor.style.setProperty(`--${c.name}`, c[editor.dataset.scheme])
+  }
+
   // ---------- Tabs ----------
 
   function tabs(list) {
@@ -339,6 +352,7 @@
   buildColours()
   buildType()
   buildRadii()
+  buildEditors()
   renderRuleRatios()
   $$('.tabs').forEach(tabs)
   inspect()

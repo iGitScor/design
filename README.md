@@ -10,7 +10,7 @@ The colours, type and shapes shared by every app of the ecosystem ([Myna](https:
 | A Tauri app       | The same CSS variables, in its web view                                      | `npm install @iscor/design`                                         |
 | A JS or TS tool   | The same values as typed constants, or JSON                                  | the same package                                                    |
 | A Swift app       | `Estuary.ink.color` (SwiftUI), `.nsColor` / `.uiColor`, radii, the font name | SwiftPM: this repository                                            |
-| VS Code           | **Estuary Light** and **Estuary Dark** themes                                | `packages/vscode` (VS Code Marketplace and Open VSX)                |
+| VS Code           | **Estuary Light** and **Estuary Dark** themes                                | `packages/vscode`; on the VS Code Marketplace and Open VSX soon     |
 | Xcode             | **Estuary Light** and **Estuary Dark** themes                                | `packages/xcode`: copy into Xcode ([how](packages/xcode/README.md)) |
 | A script (Python) | `dist/tokens.json`: `{ light, dark, base }`                                  | the npm package, or a build of this repository                      |
 
@@ -70,6 +70,17 @@ swift test
 The VS Code themes come from `packages/vscode/theme.template.json` and the Xcode themes from `packages/xcode/theme.template.json`, where each colour is a `{color.name}` reference.
 
 Versions follow [Semantic Versioning](https://semver.org/): renaming or removing a token is a major version; adding one, a minor version. See the [changelog](CHANGELOG.md).
+
+## Release it
+
+Every push to `main` runs the checks and redeploys [design.iscor.me](https://design.iscor.me). A release of the tokens:
+
+1. Move the changelog's `Unreleased` entries under the new version, and bump `version` in `package.json`.
+2. Commit, then tag and push: `git tag -a v1.2.3 -m 1.2.3 && git push origin main v1.2.3`. The tag is the Swift package's version.
+3. `npm publish`. The account uses staged publishing: approve the release on npmjs.com (two-factor code) before it goes live.
+4. `gh release create v1.2.3 --notes-file <the version's changelog entries>`.
+
+The VS Code extension has its own version and changelog (`packages/vscode`): bump both, then push a `vscode-v<version>` tag, and `.github/workflows/vscode.yml` publishes it to the VS Code Marketplace and Open VSX. The Xcode themes are copied by hand, so they need no release.
 
 ## Licence
 

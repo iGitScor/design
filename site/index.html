@@ -44,6 +44,7 @@
         <a href="#type">Type</a>
         <a href="#shape">Shape</a>
         <a href="#patterns">Patterns</a>
+        <a href="#editors">Editors</a>
         <a href="#install">Install</a>
       </nav>
       <div class="theme-switch" role="radiogroup" aria-label="Theme">
@@ -296,6 +297,40 @@
         </div>
       </section>
 
+      <section id="editors" class="section">
+        <div class="section-head">
+          <p class="eyebrow">In your editor</p>
+          <h2>Editors</h2>
+          <p>
+            <strong>Estuary Light</strong> and <strong>Estuary Dark</strong> for VS Code and Xcode, generated from the same tokens. The code
+            reads in the system's greys: strings take the accent text colour, numbers <code>ok</code>, attributes <code>info</code>,
+            comments <code>muted</code>.
+          </p>
+        </div>
+        <div class="editors">
+          <figure class="editor" data-scheme="light">
+            <figcaption>
+              <span class="editor-dots" aria-hidden="true"><i></i><i></i><i></i></span>Estuary Light
+            </figcaption>
+            <pre
+              class="editor-code"
+            ><code><span class="ln">1</span><span class="c">// The player's progress, in the system's colours.</span>
+<span class="ln">2</span><span class="k">import</span> IscorDesign
+<span class="ln">3</span>
+<span class="ln">4</span><span class="a">@MainActor</span>
+<span class="ln">5</span><span class="k">struct</span> <span class="t">EpisodeRow</span>: <span class="t">View</span> {
+<span class="ln">6</span>    <span class="k">let</span> <span class="v">title</span> = <span class="s">"Where the river meets the sea"</span>
+<span class="cur"><span class="ln">7</span>    <span class="k">var</span> <span class="v">progress</span> = <span class="n">0.42</span><span class="caret"></span></span>
+<span class="ln">8</span>
+<span class="ln">9</span>    <span class="k">var</span> <span class="v">body</span>: <span class="k">some</span> <span class="t">View</span> {
+<span class="ln">10</span>        <span class="t">ProgressView</span>(value: <span class="v">progress</span>)
+<span class="ln">11</span>            .tint(<span class="t">Estuary</span>.<span class="v">progress</span>.color)
+<span class="ln">12</span>    }
+<span class="ln">13</span>}</code></pre>
+          </figure>
+        </div>
+      </section>
+
       <section id="install" class="section">
         <div class="section-head">
           <p class="eyebrow">Get it</p>
@@ -342,7 +377,8 @@ Text("Bonjour")
             <button type="button" class="copy" data-copy-from="code-swift">Copy</button>
           </div>
           <div class="code-panel" role="tabpanel" id="code-vscode" aria-labelledby="tab-vscode" hidden>
-            <pre><code># Estuary Light and Estuary Dark
+            <pre><code># Estuary Light and Estuary Dark, from a clone of the repository
+# (on the VS Code Marketplace and Open VSX soon)
 cd packages/vscode
 npx @vscode/vsce package
 code --install-extension estuary-theme-{{VERSION}}.vsix</code></pre>
@@ -369,7 +405,10 @@ tokens["light"]["accent"]  # '#b9ff66'</code></pre>
       <p>
         <strong>@iscor/design</strong> v{{VERSION}} · the Estuary theme · code and tokens under the MIT licence · Outfit under the SIL OFL
       </p>
-      <p><a href="https://github.com/iGitScor/design/blob/main/CHANGELOG.md">Changelog</a> · <a href="https://iscor.me">iscor.me</a></p>
+      <p>
+        <a href="https://github.com/iGitScor/design">GitHub</a> · <a href="https://www.npmjs.com/package/@iscor/design">npm</a> ·
+        <a href="https://github.com/iGitScor/design/blob/main/CHANGELOG.md">Changelog</a> · <a href="https://iscor.me">iscor.me</a>
+      </p>
     </footer>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
