@@ -1,0 +1,5 @@
+# Swift Package Index: which documentation to build and host.
+version: 1
+builder:
+  configs:
+    - documentation_targets: [IscorDesign]

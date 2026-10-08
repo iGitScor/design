@@ -5,3 +5,6 @@ dist/
 *.vsix
 .DS_Store
 site-dist/
+
+# Local notes, never committed
+*.local.md
