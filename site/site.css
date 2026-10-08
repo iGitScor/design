@@ -1081,6 +1081,12 @@ main,
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
   gap: 16px;
 }
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
 .editor {
   margin: 0;
   min-width: 0;

@@ -4,15 +4,15 @@ See it at [design.iscor.me](https://design.iscor.me).
 
 The colours, type and shapes shared by every app of the ecosystem ([Myna](https://podcast.iscor.me), list, remora, and the hub [iscor.me](https://iscor.me)): an off-white, an ink, one lime accent, Outfit, round corners, together the **Estuary** theme. Written once as tokens, delivered in the format each app reads.
 
-| You build         | You get                                                                      | From                                                                |
-| ----------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| A web app or site | CSS variables (`--ink`, `--accent`, `--r-xl`, `--font`…), in light and dark  | `npm install @iscor/design`                                         |
-| A Tauri app       | The same CSS variables, in its web view                                      | `npm install @iscor/design`                                         |
-| A JS or TS tool   | The same values as typed constants, or JSON                                  | the same package                                                    |
-| A Swift app       | `Estuary.ink.color` (SwiftUI), `.nsColor` / `.uiColor`, radii, the font name | SwiftPM: this repository                                            |
-| VS Code           | **Estuary Light** and **Estuary Dark** themes                                | `packages/vscode`; on the VS Code Marketplace and Open VSX soon     |
-| Xcode             | **Estuary Light** and **Estuary Dark** themes                                | `packages/xcode`: copy into Xcode ([how](packages/xcode/README.md)) |
-| A script (Python) | `dist/tokens.json`: `{ light, dark, base }`                                  | the npm package, or a build of this repository                      |
+| You build         | You get                                                                      | From                                                                                                                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A web app or site | CSS variables (`--ink`, `--accent`, `--r-xl`, `--font`…), in light and dark  | `npm install @iscor/design`                                                                                                                                                                       |
+| A Tauri app       | The same CSS variables, in its web view                                      | `npm install @iscor/design`                                                                                                                                                                       |
+| A JS or TS tool   | The same values as typed constants, or JSON                                  | the same package                                                                                                                                                                                  |
+| A Swift app       | `Estuary.ink.color` (SwiftUI), `.nsColor` / `.uiColor`, radii, the font name | SwiftPM: this repository                                                                                                                                                                          |
+| VS Code           | **Estuary Light** and **Estuary Dark** themes                                | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=igitscor.estuary-theme) and [Open VSX](https://open-vsx.org/extension/igitscor/estuary-theme): `igitscor.estuary-theme` |
+| Xcode             | **Estuary Light** and **Estuary Dark** themes                                | `packages/xcode`: copy into Xcode ([how](packages/xcode/README.md))                                                                                                                               |
+| A script (Python) | `dist/tokens.json`: `{ light, dark, base }`                                  | the npm package, or a build of this repository                                                                                                                                                    |
 
 ## Use it
 
