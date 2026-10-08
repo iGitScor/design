@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>@iscor/design</title>
+    <meta
+      name="description"
+      content="The colours, type and shapes shared by Myna, list, remora and iscor.me: the Estuary theme, as CSS variables, typed tokens, a Swift package and a VS Code theme."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111111'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23b9ff66'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap" />
+    <script>
+      // Before the first paint: the theme the visitor picked last time, if any.
+      try {
+        const theme = localStorage.getItem('theme')
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+      } catch {}
+    </script>
+    <style>
+      /* {{TOKENS_CSS}} */
+    </style>
+    <style>
+      /* {{SITE_CSS}} */
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#colour">Skip to the tokens</a>
+
+    <header class="top">
+      <a class="brand" href="#top" aria-label="@iscor/design, back to the top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">@iscor/design</span>
+        <span class="brand-version">v{{VERSION}}</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#colour">Colour</a>
+        <a href="#contrast">Contrast</a>
+        <a href="#type">Type</a>
+        <a href="#shape">Shape</a>
+        <a href="#patterns">Patterns</a>
+        <a href="#install">Install</a>
+      </nav>
+      <div class="theme-switch" role="radiogroup" aria-label="Theme">
+        <button type="button" role="radio" data-theme-choice="system" id="theme-system">Auto</button>
+        <button type="button" role="radio" data-theme-choice="light" id="theme-light">Light</button>
+        <button type="button" role="radio" data-theme-choice="dark" id="theme-dark">Dark</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">The Estuary theme</p>
+          <h1>An off-white, an ink, one lime.</h1>
+          <p class="lede">
+            The colours, type and shapes shared by <a href="https://podcast.iscor.me">Myna</a>, list, remora and
+            <a href="https://iscor.me">iscor.me</a>. Written once as tokens, delivered as CSS variables, typed constants, a Swift package
+            and a VS Code theme.
+          </p>
+          <div class="hero-actions">
+            <button type="button" class="install-pill" data-copy="npm install @iscor/design" id="hero-install">
+              <span class="prompt" aria-hidden="true">$</span> npm install @iscor/design
+              <span class="copy-hint">Copy</span>
+            </button>
+            <a class="btn btn-ghost" href="https://github.com/iGitScor/design">Source on GitHub</a>
+          </div>
+          <dl class="hero-facts">
+            <div>
+              <dt>Colours</dt>
+              <dd data-count="colours">29</dd>
+            </div>
+            <div>
+              <dt>Schemes</dt>
+              <dd>2</dd>
+            </div>
+            <div>
+              <dt>Minimum contrast</dt>
+              <dd>4.5:1</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-stage" aria-hidden="true">
+          <div class="stage-card stage-player" data-tokens="card · r-xl">
+            <div class="stage-art" data-tokens="dark · r-lg"><span></span></div>
+            <div class="stage-meta">
+              <p class="stage-kicker" data-tokens="accent-text">Episode 42</p>
+              <p class="stage-title" data-tokens="ink">Where the river meets the sea</p>
+              <div class="stage-progress" data-tokens="line · progress"><span></span></div>
+              <div class="stage-row">
+                <span class="stage-time" data-tokens="muted">18:04</span>
+                <span class="stage-play" data-tokens="accent · on-accent · r-pill">▶</span>
+                <span class="stage-time" data-tokens="muted">−24:31</span>
+              </div>
+            </div>
+          </div>
+          <div class="stage-card stage-list" data-tokens="surface · r-lg">
+            <p class="stage-list-row">
+              <span class="dot ok"></span>Backed up <span class="chip" data-tokens="card-2 · r-pill">today</span>
+            </p>
+            <p class="stage-list-row">
+              <span class="dot info"></span>Syncing <span class="chip" data-tokens="card-2 · r-pill">partial</span>
+            </p>
+            <p class="stage-list-row"><span class="dot warn"></span>Storage almost full</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="colour" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Tokens</p>
+          <h2>Colour</h2>
+          <p>
+            Every colour has a light and a dark value under the same name. The swatch follows the theme you are looking at; the two values
+            below it are what each scheme gives. Click a swatch to copy its variable.
+          </p>
+        </div>
+        <div id="colour-groups" class="colour-groups"></div>
+      </section>
+
+      <section id="contrast" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Rules</p>
+          <h2>Contrast</h2>
+          <p>
+            Every text colour reads at 4.5:1 on every surface, in both schemes. <code>npm run check</code> fails the build otherwise. These
+            are the ratios for the <strong data-scheme-name>light</strong> scheme, computed from the tokens.
+          </p>
+        </div>
+        <div class="matrix-wrap">
+          <table class="matrix" id="matrix">
+            <caption class="visually-hidden">
+              Contrast ratio of each text colour on each surface
+            </caption>
+          </table>
+        </div>
+        <div class="rule-cards">
+          <article class="rule-card">
+            <div class="rule-demo rule-demo-bad"><span>Lime on light</span><b data-ratio="accent:backdrop:light"></b></div>
+            <h3>Lime is a fill, never text on a light surface</h3>
+            <p>On light, use <code>--accent-text</code>. On dark, the lime itself reads.</p>
+          </article>
+          <article class="rule-card">
+            <div class="rule-demo rule-demo-good"><span>Accent text</span><b data-ratio="accent-text:backdrop:light"></b></div>
+            <h3>Every text colour, every surface</h3>
+            <p><code>ink</code>, <code>muted</code>, <code>accent-text</code> and the status colours, on all five surfaces.</p>
+          </article>
+          <article class="rule-card">
+            <div class="rule-demo rule-demo-band"><span>On dark</span><b data-ratio="on-dark-muted:dark-3:light"></b></div>
+            <h3>The dark bands have their own text</h3>
+            <p><code>on-dark</code> and <code>on-dark-muted</code> stay the same in both schemes.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="type" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Tokens</p>
+          <h2>Type</h2>
+          <p>
+            One family, Outfit (SIL OFL), at every weight. Each app ships the font: <code>@fontsource-variable/outfit</code> on the web.
+          </p>
+        </div>
+        <div class="type-specimen">
+          <div class="type-big" aria-hidden="true">Aa</div>
+          <div class="type-scale" id="type-scale"></div>
+        </div>
+        <div class="type-weights" id="type-weights"></div>
+        <div class="type-mono">
+          <span class="label">--mono</span>
+          <code>const accent = light.accent // '#b9ff66'</code>
+        </div>
+      </section>
+
+      <section id="shape" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Tokens</p>
+          <h2>Shape</h2>
+          <p>Round corners, in four sizes. An app may change its own corners; the colours stay the system's.</p>
+        </div>
+        <div class="radii" id="radii"></div>
+      </section>
+
+      <section id="patterns" class="section">
+        <div class="section-head">
+          <p class="eyebrow">In use</p>
+          <h2>Patterns</h2>
+          <p>
+            How the apps put the tokens together. These are recipes rather than shipped components. Turn on <strong>Inspect</strong> and
+            point at anything to see which tokens it uses.
+          </p>
+        </div>
+        <div class="workbench">
+          <div class="workbench-bar">
+            <div class="tabs" role="tablist" aria-label="Patterns">
+              <button type="button" role="tab" id="tab-actions" aria-controls="panel-actions" aria-selected="true">Actions</button>
+              <button type="button" role="tab" id="tab-forms" aria-controls="panel-forms" aria-selected="false">Forms</button>
+              <button type="button" role="tab" id="tab-status" aria-controls="panel-status" aria-selected="false">Status</button>
+              <button type="button" role="tab" id="tab-bands" aria-controls="panel-bands" aria-selected="false">Dark band</button>
+            </div>
+            <label class="toggle" for="inspect">
+              <input type="checkbox" id="inspect" />
+              <span class="toggle-track" aria-hidden="true"><span></span></span>
+              Inspect
+            </label>
+          </div>
+
+          <div class="workbench-panel" role="tabpanel" id="panel-actions" aria-labelledby="tab-actions">
+            <div class="canvas">
+              <div class="row">
+                <button type="button" class="btn btn-accent" data-tokens="accent · on-accent · r-pill">Subscribe</button>
+                <button type="button" class="btn btn-ink" data-tokens="ink · backdrop · r-pill">Play episode</button>
+                <button type="button" class="btn btn-ghost" data-tokens="border · ink · r-pill">Share</button>
+                <button type="button" class="btn btn-danger" data-tokens="danger · r-pill">Delete</button>
+              </div>
+              <div class="row">
+                <span class="chip" data-tokens="card-2 · ink-soft · r-pill">Science</span>
+                <span class="chip chip-on" data-tokens="accent-soft · ink · r-pill">History</span>
+                <span class="chip" data-tokens="card-2 · ink-soft · r-pill">Long reads</span>
+              </div>
+            </div>
+            <pre class="snippet"><code>.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--r-pill);
+}
+.btn-primary:active { background: var(--accent-deep); }
+:focus-visible { outline: 2px solid var(--focus); }</code></pre>
+          </div>
+
+          <div class="workbench-panel" role="tabpanel" id="panel-forms" aria-labelledby="tab-forms" hidden>
+            <div class="canvas">
+              <form class="form-demo" id="form-demo" data-tokens="surface · r-lg">
+                <label for="demo-feed">Feed address</label>
+                <input id="demo-feed" type="url" value="https://example.com/feed.xml" data-tokens="field · border · r-md" />
+                <p class="hint" data-tokens="muted">Paste an RSS or Atom link.</p>
+                <div class="progress-demo">
+                  <span data-tokens="muted">Importing 214 episodes</span>
+                  <div class="bar" data-tokens="line · progress · r-pill"><span></span></div>
+                </div>
+                <button type="submit" class="btn btn-accent" data-tokens="accent · on-accent · r-pill">Add podcast</button>
+              </form>
+            </div>
+            <pre class="snippet"><code>input {
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--ink);
+}
+.hint { color: var(--muted); }
+.bar { background: var(--line); }
+.bar &gt; span { background: var(--progress); }</code></pre>
+          </div>
+
+          <div class="workbench-panel" role="tabpanel" id="panel-status" aria-labelledby="tab-status" hidden>
+            <div class="canvas">
+              <div class="status-list">
+                <p class="status" data-tokens="ok · card"><span class="dot ok"></span>Saved to iCloud</p>
+                <p class="status" data-tokens="info · card"><span class="dot info"></span>Partial: 3 of 5 lists synced</p>
+                <p class="status" data-tokens="warn · card"><span class="dot warn"></span>The feed has not updated in 30 days</p>
+                <p class="status" data-tokens="danger · card"><span class="dot danger"></span>The feed address returns 404</p>
+              </div>
+            </div>
+            <pre class="snippet"><code>.status-ok     { color: var(--ok); }
+.status-info   { color: var(--info); }   /* neutral, like list's "partial" */
+.status-warn   { color: var(--warn); }
+.status-danger { color: var(--danger); }</code></pre>
+          </div>
+
+          <div class="workbench-panel" role="tabpanel" id="panel-bands" aria-labelledby="tab-bands" hidden>
+            <div class="canvas canvas-flush">
+              <div class="band" data-tokens="dark · on-dark · r-xl">
+                <p class="band-kicker" data-tokens="accent">New in Myna</p>
+                <p class="band-title" data-tokens="on-dark">Chapters, transcripts and a sleep timer.</p>
+                <p class="band-body" data-tokens="on-dark-muted">The dark band stays dark in both schemes. Lime reads on it as text.</p>
+                <div class="band-tiles">
+                  <span data-tokens="dark-2 · r-md">dark-2</span>
+                  <span data-tokens="dark-3 · r-md">dark-3</span>
+                </div>
+              </div>
+            </div>
+            <pre class="snippet"><code>.band {
+  background: var(--dark);
+  color: var(--on-dark);
+  border-radius: var(--r-xl);
+}
+.band small { color: var(--on-dark-muted); }
+.band .kicker { color: var(--accent); }</code></pre>
+          </div>
+          <div class="inspect-tip" id="inspect-tip" hidden></div>
+        </div>
+      </section>
+
+      <section id="install" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Get it</p>
+          <h2>Install</h2>
+          <p>One source, <code>tokens/</code> in the W3C design tokens format. Everything below is generated from it.</p>
+        </div>
+        <div class="install">
+          <div class="tabs" role="tablist" aria-label="Platform">
+            <button type="button" role="tab" id="tab-css" aria-controls="code-css" aria-selected="true">CSS</button>
+            <button type="button" role="tab" id="tab-ts" aria-controls="code-ts" aria-selected="false">TypeScript</button>
+            <button type="button" role="tab" id="tab-swift" aria-controls="code-swift" aria-selected="false">Swift</button>
+            <button type="button" role="tab" id="tab-vscode" aria-controls="code-vscode" aria-selected="false">VS Code</button>
+            <button type="button" role="tab" id="tab-python" aria-controls="code-python" aria-selected="false">Python</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-css" aria-labelledby="tab-css">
+            <pre><code>@import '@iscor/design/tokens.css';
+
+body {
+  background: var(--backdrop);
+  color: var(--ink);
+  font-family: var(--font);
+}
+
+/* A site switched by a .dark class (VitePress): */
+@import '@iscor/design/tokens-class.css';</code></pre>
+            <button type="button" class="copy" data-copy-from="code-css">Copy</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-ts" aria-labelledby="tab-ts" hidden>
+            <pre><code>import { light, dark, base } from '@iscor/design'
+
+light.accent      // '#b9ff66'
+dark.backdrop     // '#0e0e14'</code></pre>
+            <button type="button" class="copy" data-copy-from="code-ts">Copy</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-swift" aria-labelledby="tab-swift" hidden>
+            <pre><code>.package(url: "https://github.com/iGitScor/design", from: "{{VERSION}}")
+
+import IscorDesign
+
+Text("Bonjour")
+    .foregroundStyle(Estuary.ink.color)
+    .background(Estuary.card.color, in: .rect(cornerRadius: Estuary.Radius.lg))</code></pre>
+            <button type="button" class="copy" data-copy-from="code-swift">Copy</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-vscode" aria-labelledby="tab-vscode" hidden>
+            <pre><code># Estuary Light and Estuary Dark
+cd packages/vscode
+npx @vscode/vsce package
+code --install-extension estuary-theme-{{VERSION}}.vsix</code></pre>
+            <button type="button" class="copy" data-copy-from="code-vscode">Copy</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-python" aria-labelledby="tab-python" hidden>
+            <pre><code>import json
+
+tokens = json.load(open("node_modules/@iscor/design/dist/tokens.json"))
+tokens["light"]["accent"]  # '#b9ff66'</code></pre>
+            <button type="button" class="copy" data-copy-from="code-python">Copy</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>
+        <strong>@iscor/design</strong> v{{VERSION}} · the Estuary theme · code and tokens under the MIT licence · Outfit under the SIL OFL
+      </p>
+      <p><a href="https://github.com/iGitScor/design/blob/main/CHANGELOG.md">Changelog</a> · <a href="https://iscor.me">iscor.me</a></p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      window.TOKENS = /* {{DATA}} */ null
+    </script>
+    <script>
+      /* {{SITE_JS}} */
+    </script>
+  </body>
+</html>

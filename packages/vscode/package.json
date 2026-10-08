@@ -1,0 +1,40 @@
+{
+  "name": "estuary-theme",
+  "displayName": "Estuary",
+  "description": "The Estuary theme of @iscor/design, in light and dark: off-white, ink and one lime accent.",
+  "version": "0.1.0",
+  "publisher": "igitscor",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iGitScor/design",
+    "directory": "packages/vscode"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "light",
+    "dark",
+    "lime",
+    "estuary"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Estuary Light",
+        "uiTheme": "vs",
+        "path": "./themes/estuary-light-color-theme.json"
+      },
+      {
+        "label": "Estuary Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/estuary-dark-color-theme.json"
+      }
+    ]
+  }
+}

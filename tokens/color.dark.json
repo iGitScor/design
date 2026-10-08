@@ -1,0 +1,149 @@
+{
+  "color": {
+    "backdrop": {
+      "$type": "color",
+      "$value": "#0e0e14",
+      "$description": "Page background."
+    },
+    "backdrop-2": {
+      "$type": "color",
+      "$value": "#0e0e14",
+      "$description": "Second page background (same as backdrop today)."
+    },
+    "surface": {
+      "$type": "color",
+      "$value": "#13131c",
+      "$description": "Raised surface: panels, the editor's current line."
+    },
+    "card": {
+      "$type": "color",
+      "$value": "#1a1a26",
+      "$description": "Card background."
+    },
+    "card-2": {
+      "$type": "color",
+      "$value": "#242433",
+      "$description": "Card on a card, chips, selection."
+    },
+    "field": {
+      "$type": "color",
+      "$value": "#13131c",
+      "$description": "Text field background."
+    },
+    "border": {
+      "$type": "color",
+      "$value": "#2a2a3a",
+      "$description": "Hairline borders."
+    },
+    "ink": {
+      "$type": "color",
+      "$value": "#e4e4ec",
+      "$description": "Body text."
+    },
+    "ink-soft": {
+      "$type": "color",
+      "$value": "#c4c4d0",
+      "$description": "Secondary text."
+    },
+    "muted": {
+      "$type": "color",
+      "$value": "#8c8ca2",
+      "$description": "Hints and captions (4.5:1 on every surface)."
+    },
+    "line": {
+      "$type": "color",
+      "$value": "#ffffff14",
+      "$description": "Dividers, drawn over any surface."
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "#b9ff66",
+      "$description": "The lime: a fill, or text on dark surfaces, never text on light ones."
+    },
+    "accent-deep": {
+      "$type": "color",
+      "$value": "#9de049",
+      "$description": "Pressed or hovered lime."
+    },
+    "accent-soft": {
+      "$type": "color",
+      "$value": "#b9ff6624",
+      "$description": "A lime tint behind content."
+    },
+    "accent-text": {
+      "$type": "color",
+      "$value": "#b9ff66",
+      "$description": "The accent as text and icons (4.5:1 on every surface)."
+    },
+    "on-accent": {
+      "$type": "color",
+      "$value": "#111111",
+      "$description": "Text on a lime fill."
+    },
+    "progress": {
+      "$type": "color",
+      "$value": "#b9ff66",
+      "$description": "Progress bars, the cursor."
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "#b9ff66",
+      "$description": "Focus rings."
+    },
+    "navy": {
+      "$type": "color",
+      "$value": "#0e0e14",
+      "$description": "Deprecated (Myna's first palette): use dark."
+    },
+    "cream": {
+      "$type": "color",
+      "$value": "#e4e4ec",
+      "$description": "Deprecated (Myna's first palette): use on-dark."
+    },
+    "on-dark": {
+      "$type": "color",
+      "$value": "#f0f0e8",
+      "$description": "Text on the dark bands of a light page."
+    },
+    "on-dark-muted": {
+      "$type": "color",
+      "$value": "#a3a39b",
+      "$description": "Secondary text on dark bands."
+    },
+    "dark": {
+      "$type": "color",
+      "$value": "#07070b",
+      "$description": "Dark band background."
+    },
+    "dark-2": {
+      "$type": "color",
+      "$value": "#13131c",
+      "$description": "Dark band, raised."
+    },
+    "dark-3": {
+      "$type": "color",
+      "$value": "#242433",
+      "$description": "Dark band, card."
+    },
+    "ok": {
+      "$type": "color",
+      "$value": "#34d399",
+      "$description": "Success text and badges."
+    },
+    "warn": {
+      "$type": "color",
+      "$value": "#fbbf24",
+      "$description": "Warnings."
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "#f87171",
+      "$description": "Errors and destructive actions."
+    },
+    "info": {
+      "$type": "color",
+      "$value": "#60a5fa",
+      "$description": "Information, neutral states."
+    }
+  }
+}

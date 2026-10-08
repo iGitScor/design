@@ -1,0 +1,42 @@
+{
+  "name": "@iscor/design",
+  "version": "0.1.0",
+  "description": "The colours, type and shapes shared by Myna, list, remora and iscor.me: CSS variables, typed tokens, a Swift package and a VS Code theme, from one set of tokens.",
+  "license": "MIT",
+  "author": "Sébastien Correaud",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iGitScor/design.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens-class.css": "./dist/tokens-class.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build/build.mjs",
+    "check": "node build/build.mjs --check && node --test test/*.test.mjs",
+    "prepack": "node build/build.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "site": "node build/site.mjs"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9"
+  }
+}

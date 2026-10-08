@@ -1,0 +1,201 @@
+{
+  "$schema": "vscode://schemas/color-theme",
+  "semanticHighlighting": true,
+  "colors": {
+    "focusBorder": "{color.focus}",
+    "foreground": "{color.ink}",
+    "descriptionForeground": "{color.muted}",
+    "errorForeground": "{color.danger}",
+    "textLink.foreground": "{color.accent-text}",
+    "textLink.activeForeground": "{color.accent-text}",
+    "editor.background": "{color.backdrop}",
+    "editor.foreground": "{color.ink}",
+    "editor.selectionBackground": "{color.card-2}",
+    "editor.lineHighlightBackground": "{color.surface}",
+    "editor.findMatchBackground": "{color.accent-soft}",
+    "editor.findMatchHighlightBackground": "{color.accent-soft}",
+    "editorCursor.foreground": "{color.focus}",
+    "editorLineNumber.foreground": "{color.muted}",
+    "editorLineNumber.activeForeground": "{color.ink}",
+    "editorLink.activeForeground": "{color.accent-text}",
+    "editorWidget.background": "{color.surface}",
+    "editorWidget.border": "{color.border}",
+    "editorGroup.border": "{color.border}",
+    "editorGroupHeader.tabsBackground": "{color.card}",
+    "editorError.foreground": "{color.danger}",
+    "editorWarning.foreground": "{color.warn}",
+    "editorGutter.addedBackground": "{color.ok}",
+    "editorGutter.modifiedBackground": "{color.warn}",
+    "editorGutter.deletedBackground": "{color.danger}",
+    "tab.activeBackground": "{color.card-2}",
+    "tab.activeForeground": "{color.ink-soft}",
+    "tab.inactiveBackground": "{color.card}",
+    "tab.inactiveForeground": "{color.muted}",
+    "tab.border": "{color.border}",
+    "activityBar.background": "{color.backdrop}",
+    "activityBar.foreground": "{color.ink}",
+    "activityBar.inactiveForeground": "{color.muted}",
+    "activityBar.border": "{color.border}",
+    "activityBarBadge.background": "{color.accent}",
+    "activityBarBadge.foreground": "{color.on-accent}",
+    "sideBar.background": "{color.backdrop}",
+    "sideBar.foreground": "{color.ink}",
+    "sideBar.border": "{color.border}",
+    "sideBarTitle.foreground": "{color.ink-soft}",
+    "sideBarSectionHeader.background": "{color.backdrop}",
+    "sideBarSectionHeader.border": "{color.border}",
+    "titleBar.activeBackground": "{color.backdrop}",
+    "titleBar.activeForeground": "{color.ink-soft}",
+    "titleBar.inactiveBackground": "{color.backdrop}",
+    "titleBar.inactiveForeground": "{color.muted}",
+    "titleBar.border": "{color.border}",
+    "statusBar.background": "{color.backdrop}",
+    "statusBar.foreground": "{color.muted}",
+    "statusBar.border": "{color.border}",
+    "statusBar.noFolderBackground": "{color.backdrop}",
+    "statusBar.debuggingBackground": "{color.accent}",
+    "statusBar.debuggingForeground": "{color.on-accent}",
+    "panel.background": "{color.backdrop}",
+    "panel.border": "{color.border}",
+    "panelTitle.activeForeground": "{color.ink}",
+    "panelTitle.inactiveForeground": "{color.muted}",
+    "panelTitle.activeBorder": "{color.focus}",
+    "terminal.background": "{color.backdrop}",
+    "terminal.foreground": "{color.ink}",
+    "terminal.ansiRed": "{color.danger}",
+    "terminal.ansiGreen": "{color.ok}",
+    "terminal.ansiYellow": "{color.warn}",
+    "terminal.ansiBrightRed": "{color.danger}",
+    "terminal.ansiBrightGreen": "{color.ok}",
+    "terminal.ansiBrightYellow": "{color.warn}",
+    "input.background": "{color.surface}",
+    "input.foreground": "{color.ink}",
+    "input.border": "{color.border}",
+    "input.placeholderForeground": "{color.muted}",
+    "dropdown.background": "{color.surface}",
+    "dropdown.foreground": "{color.ink}",
+    "dropdown.border": "{color.border}",
+    "button.background": "{color.accent}",
+    "button.foreground": "{color.on-accent}",
+    "button.hoverBackground": "{color.accent-deep}",
+    "badge.background": "{color.accent}",
+    "badge.foreground": "{color.on-accent}",
+    "progressBar.background": "{color.focus}",
+    "list.hoverBackground": "{color.card}",
+    "list.activeSelectionBackground": "{color.card-2}",
+    "list.activeSelectionForeground": "{color.ink}",
+    "list.inactiveSelectionBackground": "{color.card}",
+    "list.highlightForeground": "{color.accent-text}",
+    "list.warningForeground": "{color.warn}",
+    "list.errorForeground": "{color.danger}",
+    "gitDecoration.addedResourceForeground": "{color.ok}",
+    "gitDecoration.untrackedResourceForeground": "{color.ok}",
+    "gitDecoration.modifiedResourceForeground": "{color.warn}",
+    "gitDecoration.deletedResourceForeground": "{color.danger}",
+    "gitDecoration.ignoredResourceForeground": "{color.muted}",
+    "testing.iconPassed": "{color.ok}",
+    "testing.iconFailed": "{color.danger}"
+  },
+  "tokenColors": [
+    {
+      "name": "Comments",
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": {
+        "foreground": "{color.muted}",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Keywords, storage",
+      "scope": ["keyword", "storage"],
+      "settings": {
+        "foreground": "{color.ink}",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Strings",
+      "scope": ["string", "markup.inline.raw"],
+      "settings": {
+        "foreground": "{color.accent-text}"
+      }
+    },
+    {
+      "name": "Functions",
+      "scope": ["entity.name.function", "support.function"],
+      "settings": {
+        "foreground": "{color.ink}"
+      }
+    },
+    {
+      "name": "Variables, punctuation",
+      "scope": ["variable", "punctuation", "keyword.operator", "meta.brace"],
+      "settings": {
+        "foreground": "{color.ink-soft}",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Numbers, language constants",
+      "scope": ["constant.numeric", "constant.language"],
+      "settings": {
+        "foreground": "{color.ok}"
+      }
+    },
+    {
+      "name": "Invalid",
+      "scope": ["invalid"],
+      "settings": {
+        "foreground": "{color.danger}"
+      }
+    },
+    {
+      "name": "Headings",
+      "scope": ["markup.heading"],
+      "settings": {
+        "foreground": "{color.ink}",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Inserted",
+      "scope": ["markup.inserted"],
+      "settings": {
+        "foreground": "{color.ok}"
+      }
+    },
+    {
+      "name": "Deleted",
+      "scope": ["markup.deleted"],
+      "settings": {
+        "foreground": "{color.danger}"
+      }
+    },
+    {
+      "name": "Links",
+      "scope": ["markup.underline.link", "string.other.link"],
+      "settings": {
+        "foreground": "{color.accent-text}",
+        "fontStyle": "underline"
+      }
+    },
+    {
+      "name": "Italic",
+      "scope": ["markup.italic", "markup.quote"],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Bold",
+      "scope": ["markup.bold"],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    }
+  ],
+  "semanticTokenColors": {
+    "parameter": "{color.ink-soft}",
+    "property": "{color.ink-soft}"
+  }
+}

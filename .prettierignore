@@ -1,0 +1,6 @@
+dist/
+.build/
+package-lock.json
+# Written by build/build.mjs: npm run check compares them byte for byte.
+packages/vscode/themes/
+site-dist/

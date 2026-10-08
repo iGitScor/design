@@ -1,0 +1,31 @@
+{
+  "radius": {
+    "xl": {
+      "$type": "dimension",
+      "$value": "34px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "26px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "$value": ["Outfit Variable", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+      "$description": "Outfit (SIL OFL), from @fontsource-variable/outfit."
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": ["ui-monospace", "SF Mono", "Menlo", "monospace"]
+    }
+  }
+}
