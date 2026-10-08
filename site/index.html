@@ -377,8 +377,9 @@ dark.backdrop     // '#0e0e14'</code></pre>
 import IscorDesign
 
 Text("Bonjour")
-    .foregroundStyle(Estuary.ink.color)
-    .background(Estuary.card.color, in: .rect(cornerRadius: Estuary.Radius.lg))</code></pre>
+    .font(Estuary.font(size: 17, weight: .semibold))   // Outfit, bundled
+    .foregroundStyle(Estuary.ink)
+    .background(Estuary.card, in: .rect(cornerRadius: Estuary.Radius.lg))</code></pre>
             <button type="button" class="copy" data-copy-from="code-swift">Copy</button>
           </div>
           <div class="code-panel" role="tabpanel" id="code-vscode" aria-labelledby="tab-vscode" hidden>

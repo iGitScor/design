@@ -40,13 +40,17 @@ light.accent // '#b9ff66'
 **Swift**:
 
 ```swift
-.package(url: "https://github.com/iGitScor/design", from: "0.1.0")
+.package(url: "https://github.com/iGitScor/design", from: "0.2.0")
 
 import IscorDesign
-Text("Bonjour").foregroundStyle(Estuary.ink.color)
+
+Text("Bonjour")
+    .font(Estuary.font(size: 17, weight: .semibold))
+    .foregroundStyle(Estuary.ink)
+    .background(Estuary.card, in: .rect(cornerRadius: Estuary.Radius.lg))
 ```
 
-Each `EstuaryColor` follows the appearance it is drawn in (light or dark) by itself. The app ships the font (Outfit, SIL OFL: `@fontsource-variable/outfit` on the web).
+Each colour is a SwiftUI style that follows the colour scheme of the view it is drawn in; `.color`, `.nsColor` and `.uiColor` give the same colour to code that needs one. `Estuary.font(size:weight:relativeTo:)` sets Outfit at any weight, following Dynamic Type. The package ships the font and registers it on first use; for AppKit or UIKit code that names it, call `Estuary.registerFonts()` once. On the web, the app ships the font itself (`@fontsource-variable/outfit`).
 
 ## The rules
 
@@ -84,4 +88,4 @@ The VS Code extension has its own version and changelog (`packages/vscode`): bum
 
 ## Licence
 
-The code and the tokens are under the [MIT licence](LICENSE). The art (the birds, the fishes, the kingfisher, the app logos) is not: [art/LICENSE](art/LICENSE).
+The code and the tokens are under the [MIT licence](LICENSE). Outfit, bundled in the Swift package, is under the [SIL Open Font License](Sources/IscorDesign/Fonts/OFL.txt). The art (the birds, the fishes, the kingfisher, the app logos) is not: [art/LICENSE](art/LICENSE).

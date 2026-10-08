@@ -1,6 +1,6 @@
 {
   "name": "@iscor/design",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The colours, type and shapes shared by Myna, list, remora and iscor.me: CSS variables, typed tokens, a Swift package, and themes for VS Code and Xcode, from one set of tokens.",
   "license": "MIT",
   "author": "Sébastien Correaud",
