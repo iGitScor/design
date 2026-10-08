@@ -4,6 +4,8 @@ All notable changes are recorded here, following [Keep a Changelog](https://keep
 
 ## [Unreleased]
 
+- Estuary Light and Estuary Dark for Xcode (`packages/xcode`), generated from the tokens like the VS Code themes.
+
 ## [0.1.0] - 2026-10-08
 
 - The tokens of Myna, list, remora and iscor.me in one place: 29 colours in a light and a dark scheme, the radii and the fonts.

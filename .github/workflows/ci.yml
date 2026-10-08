@@ -40,3 +40,5 @@ jobs:
           persist-credentials: false
       - run: xcrun swift-format lint --strict -r Sources Tests Package.swift
       - run: swift test
+      - name: The Xcode themes are valid property lists
+        run: plutil -lint packages/xcode/*.xccolortheme

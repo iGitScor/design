@@ -4,13 +4,15 @@ See it at [design.iscor.me](https://design.iscor.me).
 
 The colours, type and shapes shared by every app of the ecosystem ([Myna](https://podcast.iscor.me), list, remora, and the hub [iscor.me](https://iscor.me)): an off-white, an ink, one lime accent, Outfit, round corners, together the **Estuary** theme. Written once as tokens, delivered in the format each app reads.
 
-| You build         | You get                                                                      | From                                                 |
-| ----------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------- |
-| A web app or site | CSS variables (`--ink`, `--accent`, `--r-xl`, `--font`…), in light and dark  | `npm install @iscor/design`                          |
-| A JS or TS tool   | The same values as typed constants, or JSON                                  | the same package                                     |
-| A Swift app       | `Estuary.ink.color` (SwiftUI), `.nsColor` / `.uiColor`, radii, the font name | SwiftPM: this repository                             |
-| Your editor       | **Estuary Light** and **Estuary Dark** themes                                | `packages/vscode` (VS Code Marketplace and Open VSX) |
-| A script (Python) | `dist/tokens.json`: `{ light, dark, base }`                                  | the npm package, or a build of this repository       |
+| You build         | You get                                                                      | From                                                                |
+| ----------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| A web app or site | CSS variables (`--ink`, `--accent`, `--r-xl`, `--font`…), in light and dark  | `npm install @iscor/design`                                         |
+| A Tauri app       | The same CSS variables, in its web view                                      | `npm install @iscor/design`                                         |
+| A JS or TS tool   | The same values as typed constants, or JSON                                  | the same package                                                    |
+| A Swift app       | `Estuary.ink.color` (SwiftUI), `.nsColor` / `.uiColor`, radii, the font name | SwiftPM: this repository                                            |
+| VS Code           | **Estuary Light** and **Estuary Dark** themes                                | `packages/vscode` (VS Code Marketplace and Open VSX)                |
+| Xcode             | **Estuary Light** and **Estuary Dark** themes                                | `packages/xcode`: copy into Xcode ([how](packages/xcode/README.md)) |
+| A script (Python) | `dist/tokens.json`: `{ light, dark, base }`                                  | the npm package, or a build of this repository                      |
 
 ## Use it
 
@@ -59,13 +61,13 @@ The tokens carry rules every app inherits, and `npm run check` enforces them on 
 The source is `tokens/`, in the [W3C design tokens format](https://www.designtokens.org/): `color.light.json` and `color.dark.json` (the same names in both), `base.json` (radii, fonts). Everything else is generated:
 
 ```sh
-npm run build    # dist/ (npm), Sources/…/Tokens.swift and the VS Code themes (both committed)
+npm run build    # dist/ (npm), Sources/…/Tokens.swift, the VS Code and Xcode themes (committed)
 npm run check    # the committed files match the tokens, and the contrast rules hold
 npm run site     # site-dist/: design.iscor.me, deployed by .github/workflows/site.yml
 swift test
 ```
 
-The VS Code themes come from `packages/vscode/theme.template.json`, where each colour is a `{color.name}` reference.
+The VS Code themes come from `packages/vscode/theme.template.json` and the Xcode themes from `packages/xcode/theme.template.json`, where each colour is a `{color.name}` reference.
 
 Versions follow [Semantic Versioning](https://semver.org/): renaming or removing a token is a major version; adding one, a minor version. See the [changelog](CHANGELOG.md).
 

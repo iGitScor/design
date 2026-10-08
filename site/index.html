@@ -6,7 +6,7 @@
     <title>@iscor/design</title>
     <meta
       name="description"
-      content="The colours, type and shapes shared by Myna, list, remora and iscor.me: the Estuary theme, as CSS variables, typed tokens, a Swift package and a VS Code theme."
+      content="The colours, type and shapes shared by Myna, list, remora and iscor.me: the Estuary theme, as CSS variables, typed tokens, a Swift package, and themes for VS Code and Xcode."
     />
     <link
       rel="icon"
@@ -60,8 +60,8 @@
           <h1>An off-white, an ink, one lime.</h1>
           <p class="lede">
             The colours, type and shapes shared by <a href="https://podcast.iscor.me">Myna</a>, list, remora and
-            <a href="https://iscor.me">iscor.me</a>. Written once as tokens, delivered as CSS variables, typed constants, a Swift package
-            and a VS Code theme.
+            <a href="https://iscor.me">iscor.me</a>. Written once as tokens, delivered as CSS variables, typed constants, a Swift package,
+            and themes for VS Code and Xcode.
           </p>
           <div class="hero-actions">
             <button type="button" class="install-pill" data-copy="npm install @iscor/design" id="hero-install">
@@ -308,6 +308,7 @@
             <button type="button" role="tab" id="tab-ts" aria-controls="code-ts" aria-selected="false">TypeScript</button>
             <button type="button" role="tab" id="tab-swift" aria-controls="code-swift" aria-selected="false">Swift</button>
             <button type="button" role="tab" id="tab-vscode" aria-controls="code-vscode" aria-selected="false">VS Code</button>
+            <button type="button" role="tab" id="tab-xcode" aria-controls="code-xcode" aria-selected="false">Xcode</button>
             <button type="button" role="tab" id="tab-python" aria-controls="code-python" aria-selected="false">Python</button>
           </div>
           <div class="code-panel" role="tabpanel" id="code-css" aria-labelledby="tab-css">
@@ -346,6 +347,12 @@ cd packages/vscode
 npx @vscode/vsce package
 code --install-extension estuary-theme-{{VERSION}}.vsix</code></pre>
             <button type="button" class="copy" data-copy-from="code-vscode">Copy</button>
+          </div>
+          <div class="code-panel" role="tabpanel" id="code-xcode" aria-labelledby="tab-xcode" hidden>
+            <pre><code># Estuary Light and Estuary Dark, from a clone of the repository
+mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
+cp packages/xcode/*.xccolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes/</code></pre>
+            <button type="button" class="copy" data-copy-from="code-xcode">Copy</button>
           </div>
           <div class="code-panel" role="tabpanel" id="code-python" aria-labelledby="tab-python" hidden>
             <pre><code>import json

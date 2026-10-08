@@ -6,6 +6,7 @@
 //   dist/index.js, .d.ts     the same values as typed constants
 //   Sources/IscorDesign/Tokens.swift   for SwiftUI and AppKit/UIKit apps (committed: SwiftPM reads the repo)
 //   packages/vscode/themes/  the VS Code themes, from theme.template.json (committed: the extension ships them)
+//   packages/xcode/          the Xcode themes, from theme.template.json (committed: copied into Xcode by hand)
 //
 //   node build/build.mjs           write everything
 //   node build/build.mjs --check   fail if a committed generated file differs from what the tokens give
@@ -201,11 +202,55 @@ function vscodeTheme(template, scheme, name, type) {
   return JSON.stringify({ $schema: 'vscode://schemas/color-theme', name, type, ...resolve(template) }, null, 2) + '\n'
 }
 
+/** An Xcode .xccolortheme (a plist) from packages/xcode/theme.template.json, in one scheme. */
+function xcodeTheme(template, scheme) {
+  const colour = (ref) => {
+    const token = scheme[ref.slice(1, -1)]
+    if (!token) throw new Error(`packages/xcode/theme.template.json: unknown token ${ref}`)
+    const v = token.$value
+    const channels = [1, 3, 5, 7].map((i) => (i < v.length ? parseInt(v.slice(i, i + 2), 16) / 255 : 1))
+    return channels.map((c) => +c.toFixed(6)).join(' ')
+  }
+  const font = (face) => `${face} - ${template.fontSize.toFixed(1)}`
+  const entry = (key, value, indent) => `${indent}<key>${key}</key>\n${indent}${value}`
+  const string = (s) => `<string>${s}</string>`
+  const dict = (pairs, indent) => `<dict>\n${pairs.map(([k, v]) => entry(k, v, indent + '\t')).join('\n')}\n${indent}</dict>`
+  const syntax = Object.entries(template.syntax)
+  const top = [
+    ...Object.entries(template.colors).map(([k, ref]) => [k, string(colour(ref))]),
+    ...Object.entries(template.consoleFonts).map(([k, face]) => [k, string(font(face))]),
+    ['DVTFontAndColorVersion', '<integer>1</integer>'],
+    ['DVTLineSpacing', `<real>${template.lineSpacing}</real>`],
+    [
+      'DVTSourceTextSyntaxColors',
+      dict(
+        syntax.map(([k, [ref]]) => [k, string(colour(ref))]),
+        '\t',
+      ),
+    ],
+    [
+      'DVTSourceTextSyntaxFonts',
+      dict(
+        syntax.map(([k, [, face]]) => [k, string(font(face))]),
+        '\t',
+      ),
+    ],
+  ]
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- ${GENERATED} -->
+<plist version="1.0">
+${dict(top, '')}
+</plist>
+`
+}
+
 // ---------- Writing them ----------
 
 export function outputs() {
   const tokens = loadTokens()
   const template = read('packages/vscode/theme.template.json')
+  const xcode = read('packages/xcode/theme.template.json')
   return {
     built: {
       'dist/tokens.css': css(tokens),
@@ -218,6 +263,8 @@ export function outputs() {
       'Sources/IscorDesign/Tokens.swift': swift(tokens),
       'packages/vscode/themes/estuary-light-color-theme.json': vscodeTheme(template, tokens.light, 'Estuary Light', 'light'),
       'packages/vscode/themes/estuary-dark-color-theme.json': vscodeTheme(template, tokens.dark, 'Estuary Dark', 'dark'),
+      'packages/xcode/Estuary Light.xccolortheme': xcodeTheme(xcode, tokens.light),
+      'packages/xcode/Estuary Dark.xccolortheme': xcodeTheme(xcode, tokens.dark),
     },
   }
 }
