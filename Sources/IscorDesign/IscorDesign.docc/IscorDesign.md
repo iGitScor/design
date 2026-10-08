@@ -1,4 +1,4 @@
-# ``IscorDesign``
+# `IscorDesign`
 
 The colours, type and shapes of Myna, list, remora and iscor.me: the Estuary theme, for SwiftUI, AppKit and UIKit.
 
@@ -19,17 +19,17 @@ Every colour has a light and a dark value and resolves itself in the colour sche
 
 ### The rules the colours keep
 
-- Lime (``Estuary/accent``) is a fill, or text on dark surfaces, never text on a light one. As text, use ``Estuary/accentText``.
-- Every text colour reads at 4.5:1 on every surface, in both schemes. On the dark bands, use ``Estuary/onDark`` and ``Estuary/onDarkMuted``.
+- Lime (`Estuary/accent`) is a fill, or text on dark surfaces, never text on a light one. As text, use `Estuary/accentText`.
+- Every text colour reads at 4.5:1 on every surface, in both schemes. On the dark bands, use `Estuary/onDark` and `Estuary/onDarkMuted`.
 
 ## Topics
 
 ### Tokens
 
-- ``Estuary``
-- ``EstuaryColor``
+- `Estuary`
+- `EstuaryColor`
 
 ### Type
 
-- ``Estuary/font(size:weight:relativeTo:)``
-- ``Estuary/registerFonts()``
+- `Estuary/font(size:weight:relativeTo:)`
+- `Estuary/registerFonts()`
