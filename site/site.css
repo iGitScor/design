@@ -885,6 +885,15 @@ main,
   border-color: var(--border);
   color: var(--danger);
 }
+/* A control that can't be used yet: dimmed, and nothing reacts. */
+.btn:disabled {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  transform: none;
+}
+.btn-accent:disabled:hover {
+  background: var(--accent);
+}
 
 .chip {
   display: inline-flex;

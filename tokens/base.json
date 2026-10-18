@@ -27,5 +27,12 @@
       "$type": "fontFamily",
       "$value": ["ui-monospace", "SF Mono", "Menlo", "monospace"]
     }
+  },
+  "opacity": {
+    "disabled": {
+      "$type": "number",
+      "$value": 0.45,
+      "$description": "A control that can't be used yet: dimmed to this, the same in both schemes."
+    }
   }
 }

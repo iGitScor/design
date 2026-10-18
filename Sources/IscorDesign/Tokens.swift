@@ -70,6 +70,12 @@ public enum Estuary {
         public static let pill: CGFloat = 999
     }
 
+    /// Opacities, from 0 to 1.
+    public enum Opacity {
+        /// A control that can't be used yet: dimmed to this, the same in both schemes.
+        public static let disabled: Double = 0.45
+    }
+
     /// The typeface's family name (the app ships the font: Outfit, SIL OFL).
     public static let fontFamily = "Outfit"
 }

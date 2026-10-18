@@ -65,3 +65,21 @@ describe('the generated files', () => {
     }
   })
 })
+
+describe('the disabled opacity', () => {
+  const { base } = loadTokens()
+  const disabled = base['opacity.disabled'].$value
+  it('dims, without hiding', () => assert.ok(disabled > 0 && disabled < 1, String(disabled)))
+  for (const [label, scheme] of [
+    ['light', light],
+    ['dark', dark],
+  ])
+    it(`dimmed ink still reads at 2.5:1 on the backdrop (${label})`, () => {
+      const v = (name) => scheme[`color.${name}`].$value
+      const alpha = Math.round(disabled * 255)
+        .toString(16)
+        .padStart(2, '0')
+      const ratio = contrast(v('ink').slice(0, 7) + alpha, v('backdrop'))
+      assert.ok(ratio >= 2.5, `${ratio.toFixed(2)}:1`)
+    })
+})

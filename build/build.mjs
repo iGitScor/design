@@ -60,10 +60,12 @@ const cssValue = (token) =>
       ? token.$value.map((f) => (/\s/.test(f) ? `'${f}'` : f)).join(', ')
       : token.$value
 
-/** The CSS name of a token: the colours keep their bare names (--ink), radii are --r-*, fonts --font and --mono. */
+/** The CSS name of a token: the colours keep their bare names (--ink), radii are --r-*, opacities --*-opacity, fonts
+ *  --font and --mono. */
 function cssName(name) {
   if (name.startsWith('color.')) return `--${short(name)}`
   if (name.startsWith('radius.')) return `--r-${short(name)}`
+  if (name.startsWith('opacity.')) return `--${short(name)}-opacity`
   if (name === 'font.family') return '--font'
   if (name === 'font.mono') return '--mono'
   throw new Error(`no CSS name for ${name}`)
@@ -146,6 +148,8 @@ export declare const base: {
   readonly lg: string
   readonly md: string
   readonly pill: string
+  /** A control that can't be used yet, dimmed to this (0 to 1). */
+  readonly disabled: number
   readonly family: readonly string[]
   readonly mono: readonly string[]
 }
@@ -178,6 +182,12 @@ ${Object.keys(light).map(colour).join('\n')}
     /// Corner radii, in points.
     public enum Radius {
 ${['xl', 'lg', 'md', 'pill'].map(radius).join('\n')}
+    }
+
+    /// Opacities, from 0 to 1.
+    public enum Opacity {
+        /// ${base['opacity.disabled'].$description}
+        public static let disabled: Double = ${base['opacity.disabled'].$value}
     }
 
     /// The typeface's family name (the app ships the font: Outfit, SIL OFL).

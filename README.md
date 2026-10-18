@@ -40,7 +40,7 @@ light.accent // '#b9ff66'
 **Swift**:
 
 ```swift
-.package(url: "https://github.com/iGitScor/design", from: "0.2.0")
+.package(url: "https://github.com/iGitScor/design", from: "0.3.0")
 
 import IscorDesign
 
@@ -58,11 +58,12 @@ The tokens carry rules every app inherits, and `npm run check` enforces them on 
 
 - **Lime is a fill, or text on dark surfaces, never text on a light one** (about 1.1:1). As text on light, use `--accent-text`.
 - **Every text colour reads at 4.5:1 on every surface**, in both schemes: `ink`, `ink-soft`, `muted`, `accent-text`, `ok`, `warn`, `danger`, `info` on `backdrop`, `surface`, `card`, `card-2` and `field`; `on-accent` on the lime; `on-dark` on the dark bands.
+- **A control that can't be used yet is dimmed to `--disabled-opacity`** (`Estuary.Opacity.disabled`), the same in both schemes, and stops reacting to the pointer. Being unusable, it is exempt from the 4.5:1 rule (WCAG 1.4.3); dimmed ink still reads at about 3:1.
 - An app may override what is its own (a font, the corners) in its own stylesheet; colours stay the system's.
 
 ## Change it
 
-The source is `tokens/`, in the [W3C design tokens format](https://www.designtokens.org/): `color.light.json` and `color.dark.json` (the same names in both), `base.json` (radii, fonts). Everything else is generated:
+The source is `tokens/`, in the [W3C design tokens format](https://www.designtokens.org/): `color.light.json` and `color.dark.json` (the same names in both), `base.json` (radii, opacities, fonts). Everything else is generated:
 
 ```sh
 npm run build    # dist/ (npm), Sources/…/Tokens.swift, the VS Code and Xcode themes (committed)

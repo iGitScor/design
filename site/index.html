@@ -218,6 +218,7 @@
                 <button type="button" class="btn btn-ink" data-tokens="ink · backdrop · r-pill">Play episode</button>
                 <button type="button" class="btn btn-ghost" data-tokens="border · ink · r-pill">Share</button>
                 <button type="button" class="btn btn-danger" data-tokens="danger · r-pill">Delete</button>
+                <button type="button" class="btn btn-accent" disabled data-tokens="disabled-opacity">Not yet</button>
               </div>
               <div class="row">
                 <span class="chip" data-tokens="card-2 · ink-soft · r-pill">Science</span>
@@ -231,6 +232,7 @@
   border-radius: var(--r-pill);
 }
 .btn-primary:active { background: var(--accent-deep); }
+.btn:disabled { opacity: var(--disabled-opacity); cursor: default; }
 :focus-visible { outline: 2px solid var(--focus); }</code></pre>
           </div>
 
