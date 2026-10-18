@@ -488,6 +488,11 @@ main,
   border: 1px solid var(--line);
   background: var(--v);
 }
+/* Increase Contrast's value: outlined, so it doesn't read as one of the two schemes. */
+.swatch-value.is-contrast {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
 .swatch-value.is-current {
   background: var(--ink);
   color: var(--backdrop);
@@ -986,15 +991,19 @@ main,
 }
 .status:has(.ok) {
   color: var(--ok);
+  background: var(--ok-soft);
 }
 .status:has(.info) {
   color: var(--info);
+  background: var(--info-soft);
 }
 .status:has(.warn) {
   color: var(--warn);
+  background: var(--warn-soft);
 }
 .status:has(.danger) {
   color: var(--danger);
+  background: var(--danger-soft);
 }
 .dot {
   width: 9px;

@@ -4,6 +4,11 @@ All notable changes are recorded here, following [Keep a Changelog](https://keep
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-18
+
+- Increase Contrast: `tokens/color.contrast.{light,dark}.json` darken the inks on light and lighten them on dark, and strengthen lines, borders and the accent's tints. In CSS under `prefers-contrast: more` (both stylesheets), in JS and JSON as `contrast.light` and `contrast.dark` (complete schemes), and in Swift through `EstuaryColor`, which reads the appearance (AppKit), the traits (UIKit) or `colorSchemeContrast` (SwiftUI); `components(dark:increasedContrast:)`. Checked: every text colour at 7:1 on every surface. The values come from remora's Mac app, adjusted where a text missed 7:1.
+- Soft status fills, `ok-soft`, `warn-soft`, `danger-soft` and `info-soft`: the background of a status chip or banner, with its colour reading on it at 4.5:1 (7:1 under Increase Contrast) over every surface a chip sits on. The site's status pattern uses them.
+
 ## [0.3.0] - 2026-10-18
 
 - `opacity.disabled` (0.45): a control that can't be used yet looks it. `--disabled-opacity` in CSS, `base.disabled` in JS and JSON, `Estuary.Opacity.disabled` in Swift, and a disabled button in the site's patterns.

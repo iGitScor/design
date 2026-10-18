@@ -144,6 +144,22 @@
       "$type": "color",
       "$value": "#60a5fa",
       "$description": "Information, neutral states."
+    },
+    "ok-soft": {
+      "$type": "color",
+      "$value": "#34d39929"
+    },
+    "warn-soft": {
+      "$type": "color",
+      "$value": "#fbbf2429"
+    },
+    "danger-soft": {
+      "$type": "color",
+      "$value": "#f8717129"
+    },
+    "info-soft": {
+      "$type": "color",
+      "$value": "#60a5fa29"
     }
   }
 }

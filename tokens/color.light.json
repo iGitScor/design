@@ -144,6 +144,26 @@
       "$type": "color",
       "$value": "#1f62a0",
       "$description": "Information, neutral states."
+    },
+    "ok-soft": {
+      "$type": "color",
+      "$value": "#146b501c",
+      "$description": "Background of a success chip or banner, under ok text."
+    },
+    "warn-soft": {
+      "$type": "color",
+      "$value": "#72520029",
+      "$description": "Background of a warning chip or banner, under warn text."
+    },
+    "danger-soft": {
+      "$type": "color",
+      "$value": "#a82c2321",
+      "$description": "Background of an error chip or banner, under danger text."
+    },
+    "info-soft": {
+      "$type": "color",
+      "$value": "#1f62a019",
+      "$description": "Background of a neutral status chip or banner, under info text."
     }
   }
 }

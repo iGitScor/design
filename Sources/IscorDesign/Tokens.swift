@@ -8,59 +8,115 @@ public enum Estuary {
     /// Second page background (same as backdrop today).
     public static let backdrop2 = EstuaryColor(light: 0xF0F0E8, dark: 0x0E0E14)
     /// Raised surface: panels, the editor's current line.
-    public static let surface = EstuaryColor(light: 0xF7F7F1, dark: 0x13131C)
+    public static let surface = EstuaryColor(
+        light: 0xF7F7F1, dark: 0x13131C,
+        contrastLight: 0xFFFFFF, contrastDark: 0x000000)
     /// Card background.
     public static let card = EstuaryColor(light: 0xE8E8DF, dark: 0x1A1A26)
     /// Card on a card, chips, selection.
-    public static let card2 = EstuaryColor(light: 0xDCDCD2, dark: 0x242433)
+    public static let card2 = EstuaryColor(
+        light: 0xDCDCD2, dark: 0x242433,
+        contrastLight: 0xCFCFC4, contrastDark: 0x2E2E40)
     /// Text field background.
-    public static let field = EstuaryColor(light: 0xFFFFFF, dark: 0x13131C)
+    public static let field = EstuaryColor(
+        light: 0xFFFFFF, dark: 0x13131C,
+        contrastDark: 0x000000)
     /// Hairline borders.
-    public static let border = EstuaryColor(light: 0xD0D0C8, dark: 0x2A2A3A)
+    public static let border = EstuaryColor(
+        light: 0xD0D0C8, dark: 0x2A2A3A,
+        contrastLight: 0x6E6E66, contrastDark: 0x8C8CA2)
     /// Body text.
-    public static let ink = EstuaryColor(light: 0x111111, dark: 0xE4E4EC)
+    public static let ink = EstuaryColor(
+        light: 0x111111, dark: 0xE4E4EC,
+        contrastLight: 0x000000, contrastDark: 0xFFFFFF)
     /// Secondary text.
-    public static let inkSoft = EstuaryColor(light: 0x333330, dark: 0xC4C4D0)
+    public static let inkSoft = EstuaryColor(
+        light: 0x333330, dark: 0xC4C4D0,
+        contrastLight: 0x111111, contrastDark: 0xF0F0F6)
     /// Hints and captions (4.5:1 on every surface).
-    public static let muted = EstuaryColor(light: 0x55554E, dark: 0x8C8CA2)
+    public static let muted = EstuaryColor(
+        light: 0x55554E, dark: 0x8C8CA2,
+        contrastLight: 0x2E2E2A, contrastDark: 0xC4C4D0)
     /// Dividers, drawn over any surface.
-    public static let line = EstuaryColor(light: 0x111111, lightAlpha: 0.08, dark: 0xFFFFFF, darkAlpha: 0.08)
+    public static let line = EstuaryColor(
+        light: 0x111111, lightAlpha: 0.08, dark: 0xFFFFFF, darkAlpha: 0.08,
+        contrastLight: 0x111111, contrastLightAlpha: 0.35, contrastDark: 0xFFFFFF, contrastDarkAlpha: 0.35)
     /// The lime: a fill, or text on dark surfaces, never text on light ones.
     public static let accent = EstuaryColor(light: 0xB9FF66, dark: 0xB9FF66)
     /// Pressed or hovered lime.
-    public static let accentDeep = EstuaryColor(light: 0x9DE049, dark: 0x9DE049)
+    public static let accentDeep = EstuaryColor(
+        light: 0x9DE049, dark: 0x9DE049,
+        contrastLight: 0x6FA82A, contrastDark: 0xB9FF66)
     /// A lime tint behind content.
-    public static let accentSoft = EstuaryColor(light: 0xB9FF66, lightAlpha: 0.35, dark: 0xB9FF66, darkAlpha: 0.14)
+    public static let accentSoft = EstuaryColor(
+        light: 0xB9FF66, lightAlpha: 0.35, dark: 0xB9FF66, darkAlpha: 0.14,
+        contrastLight: 0xB9FF66, contrastLightAlpha: 0.6, contrastDark: 0xB9FF66, contrastDarkAlpha: 0.3)
     /// The accent as text and icons (4.5:1 on every surface).
-    public static let accentText = EstuaryColor(light: 0x356509, dark: 0xB9FF66)
+    public static let accentText = EstuaryColor(
+        light: 0x356509, dark: 0xB9FF66,
+        contrastLight: 0x224403)
     /// Text on a lime fill.
-    public static let onAccent = EstuaryColor(light: 0x111111, dark: 0x111111)
+    public static let onAccent = EstuaryColor(
+        light: 0x111111, dark: 0x111111,
+        contrastLight: 0x000000, contrastDark: 0x000000)
     /// Progress bars, the cursor.
-    public static let progress = EstuaryColor(light: 0x111111, dark: 0xB9FF66)
+    public static let progress = EstuaryColor(
+        light: 0x111111, dark: 0xB9FF66,
+        contrastLight: 0x000000)
     /// Focus rings.
-    public static let focus = EstuaryColor(light: 0x111111, dark: 0xB9FF66)
+    public static let focus = EstuaryColor(
+        light: 0x111111, dark: 0xB9FF66,
+        contrastLight: 0x000000)
     /// Deprecated (Myna's first palette): use dark.
     public static let navy = EstuaryColor(light: 0x111111, dark: 0x0E0E14)
     /// Deprecated (Myna's first palette): use on-dark.
     public static let cream = EstuaryColor(light: 0xF0F0E8, dark: 0xE4E4EC)
     /// Text on the dark bands of a light page.
-    public static let onDark = EstuaryColor(light: 0xF0F0E8, dark: 0xF0F0E8)
+    public static let onDark = EstuaryColor(
+        light: 0xF0F0E8, dark: 0xF0F0E8,
+        contrastLight: 0xFFFFFF, contrastDark: 0xFFFFFF)
     /// Secondary text on dark bands.
     public static let onDarkMuted = EstuaryColor(light: 0xA3A39B, dark: 0xA3A39B)
     /// Dark band background.
-    public static let dark = EstuaryColor(light: 0x111111, dark: 0x07070B)
+    public static let dark = EstuaryColor(
+        light: 0x111111, dark: 0x07070B,
+        contrastLight: 0x000000, contrastDark: 0x000000)
     /// Dark band, raised.
     public static let dark2 = EstuaryColor(light: 0x1C1C1C, dark: 0x13131C)
     /// Dark band, card.
     public static let dark3 = EstuaryColor(light: 0x2A2A2A, dark: 0x242433)
     /// Success text and badges.
-    public static let ok = EstuaryColor(light: 0x146B50, dark: 0x34D399)
+    public static let ok = EstuaryColor(
+        light: 0x146B50, dark: 0x34D399,
+        contrastLight: 0x014530, contrastDark: 0x6EE7B7)
     /// Warnings.
-    public static let warn = EstuaryColor(light: 0x725200, dark: 0xFBBF24)
+    public static let warn = EstuaryColor(
+        light: 0x725200, dark: 0xFBBF24,
+        contrastLight: 0x503800, contrastDark: 0xFCD34D)
     /// Errors and destructive actions.
-    public static let danger = EstuaryColor(light: 0xA82C23, dark: 0xF87171)
+    public static let danger = EstuaryColor(
+        light: 0xA82C23, dark: 0xF87171,
+        contrastLight: 0x7A1009, contrastDark: 0xFDA6A6)
     /// Information, neutral states.
-    public static let info = EstuaryColor(light: 0x1F62A0, dark: 0x60A5FA)
+    public static let info = EstuaryColor(
+        light: 0x1F62A0, dark: 0x60A5FA,
+        contrastLight: 0x0D3E68, contrastDark: 0x93C5FD)
+    /// Background of a success chip or banner, under ok text.
+    public static let okSoft = EstuaryColor(
+        light: 0x146B50, lightAlpha: 0.11, dark: 0x34D399, darkAlpha: 0.16,
+        contrastLight: 0x014530, contrastLightAlpha: 0.14, contrastDark: 0x6EE7B7, contrastDarkAlpha: 0.19)
+    /// Background of a warning chip or banner, under warn text.
+    public static let warnSoft = EstuaryColor(
+        light: 0x725200, lightAlpha: 0.16, dark: 0xFBBF24, darkAlpha: 0.16,
+        contrastLight: 0x503800, contrastLightAlpha: 0.14, contrastDark: 0xFCD34D, contrastDarkAlpha: 0.2)
+    /// Background of an error chip or banner, under danger text.
+    public static let dangerSoft = EstuaryColor(
+        light: 0xA82C23, lightAlpha: 0.13, dark: 0xF87171, darkAlpha: 0.16,
+        contrastLight: 0x7A1009, contrastLightAlpha: 0.13, contrastDark: 0xFDA6A6, contrastDarkAlpha: 0.13)
+    /// Background of a neutral status chip or banner, under info text.
+    public static let infoSoft = EstuaryColor(
+        light: 0x1F62A0, lightAlpha: 0.1, dark: 0x60A5FA, darkAlpha: 0.16,
+        contrastLight: 0x0D3E68, contrastLightAlpha: 0.14, contrastDark: 0x93C5FD, contrastDarkAlpha: 0.14)
 
     /// Corner radii, in points.
     public enum Radius {

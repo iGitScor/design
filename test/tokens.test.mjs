@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { loadTokens, outputs } from '../build/build.mjs'
+import { loadTokens, outputs, withContrast } from '../build/build.mjs'
 
 // The rules the tokens promise in their descriptions, checked in both schemes. WCAG 2 contrast:
 // 4.5:1 for text. Every app inherits them instead of finding out one by one.
-const { light, dark } = loadTokens()
+const { light, dark, contrast: increased } = loadTokens()
 
 function rgba(hex) {
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
@@ -57,14 +57,70 @@ for (const [label, scheme] of [
 }
 
 describe('the generated files', () => {
-  it('cover every token in both schemes', () => {
+  it('cover every token in both schemes, and Increase Contrast where it changes', () => {
     const { built } = outputs()
     for (const name of Object.keys(light)) {
       const css = `--${name.split('.').pop()}:`
-      assert.equal(built['dist/tokens.css'].split(css).length - 1, 3, `${css} once per scheme block`)
+      const changes = (name in increased.light ? 1 : 0) + (name in increased.dark ? 2 : 0)
+      assert.equal(built['dist/tokens.css'].split(css).length - 1, 3 + changes, `${css} once per scheme block`)
     }
   })
 })
+
+// Increase Contrast: every text at AAA (7:1) on every surface, and on the lime and the dark bands.
+for (const [label, scheme] of [
+  ['light', withContrast(light, increased.light)],
+  ['dark', withContrast(dark, increased.dark)],
+]) {
+  const v = (name) => scheme[`color.${name}`].$value
+  describe(`the ${label} scheme under Increase Contrast`, () => {
+    for (const text of TEXT)
+      it(`${text} reads at 7:1 on every surface`, () => {
+        for (const surface of SURFACES) {
+          const ratio = contrast(v(text), v(surface))
+          assert.ok(ratio >= 7, `${text} on ${surface}: ${ratio.toFixed(2)}:1`)
+        }
+      })
+    it('on-accent and on-dark read at 7:1', () => {
+      for (const fill of ['accent', 'accent-deep']) assert.ok(contrast(v('on-accent'), v(fill)) >= 7, fill)
+      for (const band of ['dark', 'dark-2', 'dark-3']) assert.ok(contrast(v('on-dark'), v(band)) >= 7, band)
+    })
+  })
+}
+
+/** A transparent fill composited over a surface, as #rrggbb. */
+function flattened(fill, surface) {
+  const c = over(fill, surface)
+  return (
+    '#' +
+    [c.r, c.g, c.b]
+      .map((x) =>
+        Math.round(x * 255)
+          .toString(16)
+          .padStart(2, '0'),
+      )
+      .join('')
+  )
+}
+
+// A status chip: its colour on its soft fill, over the surfaces a chip sits on (card-2 is itself a chip's colour).
+const CHIP_SURFACES = ['backdrop', 'surface', 'card', 'field']
+for (const [label, scheme, target] of [
+  ['light', light, 4.5],
+  ['dark', dark, 4.5],
+  ['light, Increase Contrast', withContrast(light, increased.light), 7],
+  ['dark, Increase Contrast', withContrast(dark, increased.dark), 7],
+])
+  describe(`the soft status fills (${label})`, () => {
+    const v = (name) => scheme[`color.${name}`].$value
+    for (const status of ['ok', 'warn', 'danger', 'info'])
+      it(`${status} reads at ${target}:1 on ${status}-soft`, () => {
+        for (const surface of CHIP_SURFACES) {
+          const ratio = contrast(v(status), flattened(v(`${status}-soft`), v(surface)))
+          assert.ok(ratio >= target, `${status} on ${status}-soft over ${surface}: ${ratio.toFixed(2)}:1`)
+        }
+      })
+  })
 
 describe('the disabled opacity', () => {
   const { base } = loadTokens()

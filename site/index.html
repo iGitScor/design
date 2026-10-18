@@ -263,16 +263,17 @@
           <div class="workbench-panel" role="tabpanel" id="panel-status" aria-labelledby="tab-status" hidden>
             <div class="canvas">
               <div class="status-list">
-                <p class="status" data-tokens="ok · card"><span class="dot ok"></span>Saved to iCloud</p>
-                <p class="status" data-tokens="info · card"><span class="dot info"></span>Partial: 3 of 5 lists synced</p>
-                <p class="status" data-tokens="warn · card"><span class="dot warn"></span>The feed has not updated in 30 days</p>
-                <p class="status" data-tokens="danger · card"><span class="dot danger"></span>The feed address returns 404</p>
+                <p class="status" data-tokens="ok · ok-soft"><span class="dot ok"></span>Saved to iCloud</p>
+                <p class="status" data-tokens="info · info-soft"><span class="dot info"></span>Partial: 3 of 5 lists synced</p>
+                <p class="status" data-tokens="warn · warn-soft"><span class="dot warn"></span>The feed has not updated in 30 days</p>
+                <p class="status" data-tokens="danger · danger-soft"><span class="dot danger"></span>The feed address returns 404</p>
               </div>
             </div>
-            <pre class="snippet"><code>.status-ok     { color: var(--ok); }
-.status-info   { color: var(--info); }   /* neutral, like list's "partial" */
-.status-warn   { color: var(--warn); }
-.status-danger { color: var(--danger); }</code></pre>
+            <pre class="snippet"><code>.status-ok     { color: var(--ok);     background: var(--ok-soft); }
+.status-info   { color: var(--info);   background: var(--info-soft); }   /* neutral, like list's "partial" */
+.status-warn   { color: var(--warn);   background: var(--warn-soft); }
+.status-danger { color: var(--danger); background: var(--danger-soft); }
+/* Increase Contrast (prefers-contrast: more) switches every token itself. */</code></pre>
           </div>
 
           <div class="workbench-panel" role="tabpanel" id="panel-bands" aria-labelledby="tab-bands" hidden>

@@ -1,0 +1,100 @@
+{
+  "color": {
+    "surface": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "card-2": {
+      "$type": "color",
+      "$value": "#2e2e40"
+    },
+    "field": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "#8c8ca2"
+    },
+    "ink": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "ink-soft": {
+      "$type": "color",
+      "$value": "#f0f0f6"
+    },
+    "muted": {
+      "$type": "color",
+      "$value": "#c4c4d0"
+    },
+    "line": {
+      "$type": "color",
+      "$value": "#ffffff59"
+    },
+    "accent-deep": {
+      "$type": "color",
+      "$value": "#b9ff66"
+    },
+    "accent-soft": {
+      "$type": "color",
+      "$value": "#b9ff664d"
+    },
+    "accent-text": {
+      "$type": "color",
+      "$value": "#b9ff66"
+    },
+    "on-accent": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "dark": {
+      "$type": "color",
+      "$value": "#000000"
+    },
+    "on-dark": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "ok": {
+      "$type": "color",
+      "$value": "#6ee7b7"
+    },
+    "warn": {
+      "$type": "color",
+      "$value": "#fcd34d"
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "#fda6a6"
+    },
+    "info": {
+      "$type": "color",
+      "$value": "#93c5fd"
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "#b9ff66"
+    },
+    "progress": {
+      "$type": "color",
+      "$value": "#b9ff66"
+    },
+    "ok-soft": {
+      "$type": "color",
+      "$value": "#6ee7b730"
+    },
+    "warn-soft": {
+      "$type": "color",
+      "$value": "#fcd34d33"
+    },
+    "danger-soft": {
+      "$type": "color",
+      "$value": "#fda6a621"
+    },
+    "info-soft": {
+      "$type": "color",
+      "$value": "#93c5fd24"
+    }
+  }
+}

@@ -95,6 +95,7 @@
       ['dark', 'dark-2', 'dark-3', 'on-dark', 'on-dark-muted', 'navy', 'cream'],
     ],
     ['Status', 'Saved, partial, attention, failure.', ['ok', 'info', 'warn', 'danger']],
+    ['Status fills', 'Under a status chip or banner: its colour reads on them.', ['ok-soft', 'info-soft', 'warn-soft', 'danger-soft']],
   ]
 
   const swatches = []
@@ -113,6 +114,17 @@
           v.dataset.scheme = s
           return v
         })
+        // Increase Contrast's values, when the token changes under it.
+        const stronger = [
+          ['contrastLight', 'Increase Contrast, light'],
+          ['contrastDark', 'Increase Contrast, dark'],
+        ]
+          .filter(([key]) => c[key])
+          .map(([key, label]) => {
+            const v = el('span', { className: 'swatch-value is-contrast', title: `${label}: ${c[key]}` }, el('i'), c[key])
+            v.style.setProperty('--v', c[key])
+            return v
+          })
         const button = el(
           'button',
           { type: 'button', className: 'swatch', id: `swatch-${name}` },
@@ -122,7 +134,7 @@
             { className: 'swatch-body' },
             el('span', { className: 'swatch-name' }, `--${name}`),
             el('span', { className: 'swatch-desc' }, c.description || ''),
-            el('span', { className: 'swatch-values' }, ...values),
+            el('span', { className: 'swatch-values' }, ...values, ...stronger),
           ),
         )
         button.style.setProperty('--chip', `var(--${name})`)

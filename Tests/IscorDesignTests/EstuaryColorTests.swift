@@ -19,4 +19,19 @@ struct EstuaryColorTests {
         #expect(Estuary.Radius.xl == 34)
         #expect(Estuary.fontFamily == "Outfit")
     }
+
+    /// Increase Contrast darkens the inks on light and strengthens the lines; a token that doesn't change keeps its
+    /// colour.
+    @Test func followsIncreaseContrast() {
+        let ink = Estuary.ink.components(dark: false, increasedContrast: true)
+        #expect(ink.red == 0 && ink.green == 0 && ink.blue == 0)
+        #expect(Estuary.line.components(dark: true, increasedContrast: true).alpha == 0.35)
+        #expect(Estuary.backdrop.components(dark: false, increasedContrast: true) == Estuary.backdrop.components(dark: false))
+        #expect(Estuary.accentSoft.components(dark: false, increasedContrast: true).alpha == 0.6)
+    }
+
+    @Test func givesTheSoftStatusFills() {
+        #expect(Estuary.okSoft.components(dark: true).alpha == 0.16)
+        #expect(Estuary.okSoft.components(dark: false).red == Estuary.ok.components(dark: false).red)
+    }
 }

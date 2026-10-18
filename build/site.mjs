@@ -10,13 +10,16 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const read = (path) => readFileSync(join(root, path), 'utf8')
 const out = join(root, 'site-dist')
 
-const { light, dark, base } = loadTokens()
+const { light, dark, base, contrast } = loadTokens()
 const short = (name) => name.split('.').pop()
 const data = {
   colours: Object.keys(light).map((key) => ({
     name: short(key),
     light: light[key].$value,
     dark: dark[key].$value,
+    // Under Increase Contrast, where it changes.
+    contrastLight: contrast.light[key]?.$value ?? null,
+    contrastDark: contrast.dark[key]?.$value ?? null,
     description: light[key].$description ?? '',
   })),
   radii: Object.fromEntries(

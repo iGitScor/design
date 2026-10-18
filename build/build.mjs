@@ -1,8 +1,9 @@
 // Turns tokens/ into every format the apps read:
 //
-//   dist/tokens.css          CSS variables: light, dark by the OS, or forced by data-theme="light|dark"
+//   dist/tokens.css          CSS variables: light, dark by the OS, or forced by data-theme="light|dark"; stronger
+//                            under Increase Contrast (prefers-contrast: more)
 //   dist/tokens-class.css    the same, switched by a .dark class (VitePress and other class-switched sites)
-//   dist/tokens.json         { light, dark, base }, for scripts (Python, Node)
+//   dist/tokens.json         { light, dark, base, contrast: { light, dark } }, for scripts (Python, Node)
 //   dist/index.js, .d.ts     the same values as typed constants
 //   Sources/IscorDesign/Tokens.swift   for SwiftUI and AppKit/UIKit apps (committed: SwiftPM reads the repo)
 //   packages/vscode/themes/  the VS Code themes, from theme.template.json (committed: the extension ships them)
@@ -35,13 +36,27 @@ export function loadTokens() {
   const light = flatten(read('tokens/color.light.json'))
   const dark = flatten(read('tokens/color.dark.json'))
   const base = flatten(read('tokens/base.json'))
+  // Increase Contrast: only the tokens that change, in each scheme.
+  const contrast = {
+    light: flatten(read('tokens/color.contrast.light.json')),
+    dark: flatten(read('tokens/color.contrast.dark.json')),
+  }
+  const unknown = [...Object.keys(contrast.light), ...Object.keys(contrast.dark)].filter((k) => !(k in light))
+  if (unknown.length) throw new Error(`contrast tokens with no plain token: ${unknown.join(', ')}`)
   const missing = [...Object.keys(light).filter((k) => !(k in dark)), ...Object.keys(dark).filter((k) => !(k in light))]
   if (missing.length) throw new Error(`tokens defined in one scheme only: ${missing.join(', ')}`)
-  for (const [name, token] of Object.entries({ ...light, ...dark }))
+  for (const [name, token] of [
+    ...Object.entries({ ...light, ...dark }),
+    ...Object.entries(contrast.light),
+    ...Object.entries(contrast.dark),
+  ])
     if (token.$type === 'color' && !/^#[0-9a-f]{6}([0-9a-f]{2})?$/.test(token.$value))
       throw new Error(`${name}: ${token.$value} is not a lowercase #rrggbb or #rrggbbaa colour`)
-  return { light, dark, base }
+  return { light, dark, base, contrast }
 }
+
+/** A scheme under Increase Contrast: its tokens, with the contrast ones over them. */
+export const withContrast = (scheme, overrides) => ({ ...scheme, ...overrides })
 
 const short = (name) => name.split('.').pop() // color.ink-soft → ink-soft
 const camel = (name) => short(name).replace(/-(\w)/g, (_, c) => c.toUpperCase()) // ink-soft → inkSoft, card-2 → card2
@@ -78,7 +93,7 @@ const declarations = (tokens, indent) =>
 
 // ---------- The formats ----------
 
-function css({ light, dark, base }) {
+function css({ light, dark, base, contrast }) {
   return `/* @iscor/design, the Estuary theme. ${GENERATED} */
 
 :root,
@@ -99,10 +114,28 @@ ${declarations(dark, '    ')}
 ${declarations(dark, '  ')}
   color-scheme: dark;
 }
+
+/* Increase Contrast: darker inks and stronger lines on light, lighter ones on dark. */
+@media (prefers-contrast: more) {
+  :root,
+  :root[data-theme='light'] {
+${declarations(contrast.light, '    ')}
+  }
+
+  :root[data-theme='dark'] {
+${declarations(contrast.dark, '    ')}
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+${declarations(contrast.dark, '    ')}
+  }
+}
 `
 }
 
-function cssClass({ light, dark, base }) {
+function cssClass({ light, dark, base, contrast }) {
   return `/* @iscor/design, the Estuary theme, switched by a .dark class on the root (VitePress and the like). ${GENERATED} */
 
 :root {
@@ -115,20 +148,41 @@ ${declarations(base, '  ')}
 ${declarations(dark, '  ')}
   color-scheme: dark;
 }
+
+/* Increase Contrast: darker inks and stronger lines on light, lighter ones on dark. */
+@media (prefers-contrast: more) {
+  :root {
+${declarations(contrast.light, '    ')}
+  }
+
+  :root.dark {
+${declarations(contrast.dark, '    ')}
+  }
+}
 `
 }
 
 const values = (tokens) => Object.fromEntries(Object.entries(tokens).map(([name, token]) => [short(name), token.$value]))
 
-function json({ light, dark, base }) {
-  return JSON.stringify({ light: values(light), dark: values(dark), base: values(base) }, null, 2) + '\n'
+/** Both schemes under Increase Contrast, complete: every token, the contrast ones over the plain ones. */
+const contrastValues = ({ light, dark, contrast }) => ({
+  light: values(withContrast(light, contrast.light)),
+  dark: values(withContrast(dark, contrast.dark)),
+})
+
+function json(tokens) {
+  const { light, dark, base } = tokens
+  return JSON.stringify({ light: values(light), dark: values(dark), base: values(base), contrast: contrastValues(tokens) }, null, 2) + '\n'
 }
 
-function js({ light, dark, base }) {
+function js(tokens) {
+  const { light, dark, base } = tokens
   return `// ${GENERATED}
 export const light = ${JSON.stringify(values(light), null, 2)}
 export const dark = ${JSON.stringify(values(dark), null, 2)}
 export const base = ${JSON.stringify(values(base), null, 2)}
+/** Both schemes under Increase Contrast (prefers-contrast: more), every token. */
+export const contrast = ${JSON.stringify(contrastValues(tokens), null, 2)}
 `
 }
 
@@ -143,6 +197,8 @@ ${keys}
 }
 export declare const light: Scheme
 export declare const dark: Scheme
+/** Both schemes under Increase Contrast (prefers-contrast: more), every token. */
+export declare const contrast: { readonly light: Scheme; readonly dark: Scheme }
 export declare const base: {
   readonly xl: string
   readonly lg: string
@@ -156,7 +212,7 @@ export declare const base: {
 `
 }
 
-function swift({ light, dark, base }) {
+function swift({ light, dark, base, contrast }) {
   const hex = (v) => `0x${v.slice(1, 7).toUpperCase()}`
   const alpha = (v) => (v.length === 9 ? Math.round((parseInt(v.slice(7), 16) / 255) * 100) / 100 : 1)
   const colour = (name) => {
@@ -168,8 +224,20 @@ function swift({ light, dark, base }) {
       `dark: ${hex(d)}`,
       ...(alpha(d) !== 1 ? [`darkAlpha: ${alpha(d)}`] : []),
     ]
+    // Increase Contrast: only where it changes, on a line of its own.
+    const stronger = []
+    for (const [scheme, plain] of [
+      ['Light', l],
+      ['Dark', d],
+    ]) {
+      const v = contrast[scheme.toLowerCase()][name]?.$value
+      if (!v || v === plain) continue
+      stronger.push(`contrast${scheme}: ${hex(v)}`)
+      if (alpha(v) !== 1) stronger.push(`contrast${scheme}Alpha: ${alpha(v)}`)
+    }
     const doc = light[name].$description ? `    /// ${light[name].$description}\n` : ''
-    return `${doc}    public static let ${camel(name)} = EstuaryColor(${args.join(', ')})`
+    const call = stronger.length ? `(\n        ${args.join(', ')},\n        ${stronger.join(', ')})` : `(${args.join(', ')})`
+    return `${doc}    public static let ${camel(name)} = EstuaryColor${call}`
   }
   const radius = (k) => `        public static let ${k}: CGFloat = ${parseFloat(base[`radius.${k}`].$value)}`
   return `// ${GENERATED}
